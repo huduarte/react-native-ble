@@ -134,6 +134,7 @@ const App = () => {
                   );
 
                   BleManager.read(peripheral.id, '1818', '2a63').then((per) => {
+                    console.log('valores de pow ?', per);
                     const buffer = Buffer.Buffer.from(per);
                     const sensorData = buffer.readFloatBE();
                     console.log(sensorData);
