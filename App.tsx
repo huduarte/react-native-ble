@@ -1,10 +1,3 @@
-/**
- * Sample BLE React Native App
- *
- * @format
- * @flow strict-local
- */
-
 import React, {useState, useEffect} from 'react';
 import {
   SafeAreaView,
@@ -99,65 +92,6 @@ const App = () => {
     peripherals.set(peripheral.id, peripheral);
     setList(Array.from(peripherals.values()));
   };
-
-  // const testPeripheral = (peripheral) => {
-  //   console.log('dipositivo: ', peripheral);
-  //   console.log('Id do dispositivo:', peripheral.id);
-  //   Alert.alert(
-  //     'Dispositivo é conectavel ?',
-  //     `${peripheral.advertising.isConnectable}`,
-  //   );
-  //   if (peripheral) {
-  //     if (peripheral.connected) {
-  //       BleManager.disconnect(peripheral.id);
-  //     } else {
-  //       BleManager.connect(peripheral.id)
-  //         .then(() => {
-  //           let p = peripherals.get(peripheral.id);
-  //           if (p) {
-  //             p.connected = true;
-  //             peripherals.set(peripheral.id, p);
-  //             setList(Array.from(peripherals.values()));
-  //           }
-  //           Alert.alert('Conectado', 'Connected to ' + peripheral.id);
-  //           console.log('Connected to ' + peripheral.id);
-  //           isConnected(true);
-
-  //           setTimeout(() => {
-  //             /* Test read current RSSI value */
-  //             BleManager.retrieveServices(peripheral.id).then(
-  //               (peripheralData) => {
-  //                 console.log('\n\n\n', 'dados', peripheralData, '\n\n\n');
-  //                 console.log(
-  //                   'caracteristicas',
-  //                   peripheralData.characteristics[5],
-  //                 );
-
-  //                 BleManager.read(peripheral.id, '1818', '2a63').then((per) => {
-  //                   const buffer = Buffer.Buffer.from(per);
-  //                   const sensorData = buffer.readFloatLE();
-  //                   console.log(sensorData);
-  //                 });
-
-  //                 BleManager.readRSSI(peripheral.id).then((rssi) => {
-  //                   console.log('Retrieved actual RSSI value', rssi);
-  //                   let p = peripherals.get(peripheral.id);
-  //                   if (p) {
-  //                     p.rssi = rssi;
-  //                     peripherals.set(peripheral.id, p);
-  //                     setList(Array.from(peripherals.values()));
-  //                   }
-  //                 });
-  //               },
-  //             );
-  //           }, 900);
-  //         })
-  //         .catch((error) => {
-  //           console.log('Connection error', error);
-  //         });
-  //     }
-  //   }
-  // };
 
   const testPeripheral = (peripheral) => {
     connectAndPrepare(peripheral.id, '1818', '2a63');
